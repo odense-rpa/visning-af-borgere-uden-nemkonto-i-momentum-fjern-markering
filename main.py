@@ -65,6 +65,9 @@ def process_workqueue(workqueue: Workqueue):
                     ),
                     None,
                 )
+                # luk borgersag i ky
+                ky.borgere.luk_borgersag(borger["pId"])
+
                 if not nemkonto_opgave:
                     borger = momentum.borgere.hent_borger(data["cpr"])
                     borgers_markeringer = momentum.borgere.hent_markeringer(borger)
