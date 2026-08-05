@@ -55,6 +55,8 @@ def process_workqueue(workqueue: Workqueue):
  
             try:
                 borger = ky.borgere.hent_borgersag(data["cpr"])
+                # luk borgersag i ky
+                ky.borgere.luk_borgersag(borger["pId"])
 
                 ubehandlede_opgaver = borger.get("Ubehandlede opgaver", [])
                 nemkonto_opgave = next(
@@ -65,8 +67,6 @@ def process_workqueue(workqueue: Workqueue):
                     ),
                     None,
                 )
-                # luk borgersag i ky
-                ky.borgere.luk_borgersag(borger["pId"])
 
                 if not nemkonto_opgave:
                     borger = momentum.borgere.hent_borger(data["cpr"])
