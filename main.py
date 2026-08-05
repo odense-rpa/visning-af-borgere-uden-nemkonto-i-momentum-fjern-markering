@@ -76,8 +76,6 @@ def process_workqueue(workqueue: Workqueue):
                     if nemkonto_markering:
                         momentum.borgere.afslut_markering(nemkonto_markering, datetime.datetime.today())
                         tracker.track_task(proces_navn)
-                    else:
-                        tracker.track_partial_task(proces_navn)
 
 
             except WorkItemError as e:
